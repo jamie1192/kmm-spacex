@@ -13,9 +13,9 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
     // SpaceX dependencies
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-    implementation("androidx.core:core-ktx:1.3.1")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
+    implementation("androidx.core:core-ktx:1.3.2")
+    implementation("androidx.recyclerview:recyclerview:1.2.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
 
@@ -42,11 +42,11 @@ dependencies {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 30
     defaultConfig {
         applicationId = "com.jastley.innovationday.android"
-        minSdkVersion(21)
-        targetSdkVersion(30)
+        minSdk = 21
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
     }
