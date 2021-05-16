@@ -52,6 +52,7 @@ android {
     }
     buildFeatures {
 //        compose = true
+        viewBinding = true
     }
     // Set both the Java and Kotlin compilers to target Java 8.
 

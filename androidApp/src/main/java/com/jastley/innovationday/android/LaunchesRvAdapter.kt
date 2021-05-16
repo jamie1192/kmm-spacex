@@ -6,16 +6,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.jastley.innovationday.android.databinding.ItemLaunchBinding
 import com.jastley.innovationday.shared.entity.RocketLaunch
 
 class LaunchesRvAdapter(var launches: List<RocketLaunch>): RecyclerView.Adapter<LaunchesRvAdapter.LaunchViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): LaunchesRvAdapter.LaunchViewHolder {
-        return LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_launch, parent, false)
-            .run(::LaunchViewHolder)
+        val binding = ItemLaunchBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false)
+        return LaunchViewHolder(binding)
     }
 
     override fun getItemCount(): Int = launches.count()
@@ -24,11 +28,11 @@ class LaunchesRvAdapter(var launches: List<RocketLaunch>): RecyclerView.Adapter<
         holder.bindData(launches[position])
     }
 
-    inner class LaunchViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val missionTV = itemView.findViewById<TextView>(R.id.missionName)
-        private val launchYearTV = itemView.findViewById<TextView>(R.id.launchYear)
-        private val launchSuccessTV = itemView.findViewById<TextView>(R.id.launchSuccess)
-        private val missionDetailsTV = itemView.findViewById<TextView>(R.id.details)
+    inner class LaunchViewHolder(binding: ItemLaunchBinding): RecyclerView.ViewHolder(binding.root) {
+        private val missionTV = binding.missionName
+        private val launchYearTV = binding.launchYear
+        private val launchSuccessTV = binding.launchSuccess
+        private val missionDetailsTV = binding.details
 
         fun bindData(launch: RocketLaunch) {
             val ctx = itemView.context

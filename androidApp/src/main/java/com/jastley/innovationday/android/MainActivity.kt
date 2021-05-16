@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.jastley.innovationday.android.databinding.ActivityMainBinding
 import com.jastley.innovationday.shared.SpaceXSDK
 import com.jastley.innovationday.shared.cache.DatabaseDriverFactory
 import kotlinx.coroutines.MainScope
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var launchesRv: RecyclerView
     private lateinit var progressBarView: FrameLayout
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var binding: ActivityMainBinding
 
     private val sdk = SpaceXSDK(DatabaseDriverFactory(this))
 
@@ -30,11 +32,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         title = "SpaceX Launches"
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        launchesRv = findViewById(R.id.launchListRv)
-        progressBarView = findViewById(R.id.progressBar)
-        swipeRefreshLayout = findViewById(R.id.swipeContainer)
+        setContentView(binding.root)
+
+        launchesRv = binding.launchListRv
+        progressBarView = binding.progressBar
+        swipeRefreshLayout = binding.swipeContainer
 
         launchesRv.adapter = launchesRvAdapter
         launchesRv.layoutManager = LinearLayoutManager(this)
