@@ -1,9 +1,9 @@
-package com.jastley.innovationday
+package com.jastley.innovationday.shared
 
-import com.jastley.innovationday.cache.Database
-import com.jastley.innovationday.cache.DatabaseDriverFactory
-import com.jastley.innovationday.entity.RocketLaunch
-import com.jastley.innovationday.network.SpaceXAPI
+import com.jastley.innovationday.shared.cache.Database
+import com.jastley.innovationday.shared.cache.DatabaseDriverFactory
+import com.jastley.innovationday.shared.entity.RocketLaunch
+import com.jastley.innovationday.shared.network.SpaceXAPI
 
 class SpaceXSDK(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = Database(databaseDriverFactory)

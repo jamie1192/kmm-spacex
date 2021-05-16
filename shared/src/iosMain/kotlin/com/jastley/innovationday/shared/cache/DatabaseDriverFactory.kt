@@ -1,4 +1,4 @@
-package com.jastley.innovationday.cache
+package com.jastley.innovationday.shared.cache
 
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver

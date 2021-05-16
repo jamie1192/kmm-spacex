@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.jastley.innovationday.entity.RocketLaunch
+import com.jastley.innovationday.shared.entity.RocketLaunch
 
 class LaunchesRvAdapter(var launches: List<RocketLaunch>): RecyclerView.Adapter<LaunchesRvAdapter.LaunchViewHolder>() {
     override fun onCreateViewHolder(

@@ -1,6 +1,6 @@
-package com.jastley.innovationday.network
+package com.jastley.innovationday.shared.network
 
-import com.jastley.innovationday.entity.RocketLaunch
+import com.jastley.innovationday.shared.entity.RocketLaunch
 import io.ktor.client.*
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer

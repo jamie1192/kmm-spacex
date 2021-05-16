@@ -1,8 +1,8 @@
-package com.jastley.innovationday.cache
+package com.jastley.innovationday.shared.cache
 
-import com.jastley.innovationday.entity.Links
-import com.jastley.innovationday.entity.Rocket
-import com.jastley.innovationday.entity.RocketLaunch
+import com.jastley.innovationday.shared.entity.Links
+import com.jastley.innovationday.shared.entity.Rocket
+import com.jastley.innovationday.shared.entity.RocketLaunch
 
 internal class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = AppDatabase(databaseDriverFactory.createDriver())

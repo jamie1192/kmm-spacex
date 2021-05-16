@@ -1,4 +1,4 @@
-package com.jastley.innovationday.cache
+package com.jastley.innovationday.shared.cache
 
 import android.content.Context
 import com.squareup.sqldelight.android.AndroidSqliteDriver

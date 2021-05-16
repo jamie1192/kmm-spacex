@@ -1,4 +1,4 @@
-package com.jastley.innovationday.entity
+package com.jastley.innovationday.shared.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

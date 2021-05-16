@@ -8,8 +8,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.jastley.innovationday.SpaceXSDK
-import com.jastley.innovationday.cache.DatabaseDriverFactory
+import com.jastley.innovationday.shared.SpaceXSDK
+import com.jastley.innovationday.shared.cache.DatabaseDriverFactory
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
