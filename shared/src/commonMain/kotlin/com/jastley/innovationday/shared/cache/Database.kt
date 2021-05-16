@@ -59,6 +59,8 @@ internal class Database(databaseDriverFactory: DatabaseDriverFactory) {
                 if (rocket == null) {
                     insertRocket(rocketLaunch)
                 }
+
+                insertLaunch(launch = rocketLaunch)
             }
         }
     }
