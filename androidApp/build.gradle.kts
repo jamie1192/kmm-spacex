@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
 }
 
-val composeVersion = "1.0.0-beta01"
+val composeVersion = "1.0.0-beta08"
 
 dependencies {
     // default dependencies
@@ -14,30 +14,32 @@ dependencies {
 
     // SpaceX dependencies
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.recyclerview:recyclerview:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
 
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+
     // Jetpack Compose dependencies
-//    implementation("androidx.compose.compiler:compiler:$composeVersion")
-//    implementation("androidx.compose.ui:ui:$composeVersion")
-//    // Tooling support (Previews, etc.)
-//    implementation( "androidx.compose.ui:ui-tooling:$composeVersion")
-//    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-//    implementation("androidx.compose.foundation:foundation:$composeVersion")
-//    // Material Design
-//    implementation("androidx.compose.material:material:$composeVersion")
-//    // Material design icons
-//    implementation("androidx.compose.material:material-icons-core:$composeVersion")
-//    implementation("androidx.compose.material:material-icons-extended:$composeVersion")
-//    // Integration with activities
-//    implementation("androidx.activity:activity-compose:1.3.0-alpha03")
-//    // Integration with ViewModels
-//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02")
-//    // Integration with observables
-//    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
-//    implementation("androidx.compose.runtime:runtime-rxjava2:$composeVersion")
+    implementation("androidx.compose.compiler:compiler:$composeVersion")
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    // Tooling support (Previews, etc.)
+    implementation( "androidx.compose.ui:ui-tooling:$composeVersion")
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    // Material Design
+    implementation("androidx.compose.material:material:$composeVersion")
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core:$composeVersion")
+    implementation("androidx.compose.material:material-icons-extended:$composeVersion")
+    // Integration with activities
+    implementation("androidx.activity:activity-compose:1.3.0-beta01")
+    // Integration with ViewModels
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha06")
+    // Integration with observables
+    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
+    implementation("androidx.compose.runtime:runtime-rxjava2:$composeVersion")
 
 }
 
@@ -51,11 +53,11 @@ android {
         versionName = "1.0"
     }
     buildFeatures {
-//        compose = true
+        compose = true
         viewBinding = true
     }
-    // Set both the Java and Kotlin compilers to target Java 8.
 
+    // Set both the Java and Kotlin compilers to target Java 8.
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -65,10 +67,10 @@ android {
         jvmTarget = "1.8"
     }
 
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = "0.1.0-dev13"
-//        kotlinCompilerVersion = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
-//    }
+    composeOptions {
+        kotlinCompilerVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = "1.0.0-beta08"
+    }
 
     buildTypes {
         getByName("release") {
