@@ -1,75 +1,46 @@
 package com.jastley.innovationday.android
 
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.jastley.innovationday.android.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.jastley.innovationday.shared.SpaceXSDK
 import com.jastley.innovationday.shared.cache.DatabaseDriverFactory
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import com.jastley.innovationday.shared.entity.RocketLaunch
 
 
-class MainActivity : AppCompatActivity() {
-    private val mainScope = MainScope()
-
-    private lateinit var launchesRv: RecyclerView
-    private lateinit var progressBarView: FrameLayout
-    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : ComponentActivity() {
 
     private val sdk = SpaceXSDK(DatabaseDriverFactory(this))
-
-    private val launchesRvAdapter = LaunchesRvAdapter(listOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        title = "SpaceX Launches"
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        val viewModel: LaunchViewModel by viewModels { LaunchViewModelFactory(this, sdk)}
 
-        setContentView(binding.root)
-
-        launchesRv = binding.launchListRv
-        progressBarView = binding.progressBar
-        swipeRefreshLayout = binding.swipeContainer
-
-        launchesRv.adapter = launchesRvAdapter
-        launchesRv.layoutManager = LinearLayoutManager(this)
-
-        swipeRefreshLayout.setOnRefreshListener {
-            swipeRefreshLayout.isRefreshing = false
-            displayLaunches(true)
-        }
-
-        displayLaunches(false)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mainScope.cancel()
-    }
-
-    private fun displayLaunches(needReload: Boolean) {
-        progressBarView.isVisible = true
-        mainScope.launch {
-            kotlin.runCatching {
-                sdk.getLaunches(needReload)
-            }.onSuccess {
-                launchesRvAdapter.launches = it
-                launchesRvAdapter.notifyDataSetChanged()
-            }.onFailure {
-                Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_SHORT).show()
+        setContent {
+            AppTheme {
+                Launches(viewModel = viewModel)
             }
-            progressBarView.isVisible = false
         }
     }
+
 }
 
+@Composable
+fun Launches(viewModel: LaunchViewModel) {
+    val launches: List<RocketLaunch> by viewModel.launchList.collectAsState()
+
+    Scaffold(
+        topBar = { TopAppBar(title = { Text("SpaceX Launches") }) },
+    ) {
+        LaunchList(launches = launches)
+    }
+}
 
