@@ -1,6 +1,6 @@
 buildscript {
 
-    val kotlinVersion = "1.5.10"
+    val kotlinVersion = "1.5.31"
     val sqlDelightVersion: String by project
 
     repositories {
