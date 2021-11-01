@@ -38,9 +38,9 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
     }
 
-    val coroutinesVersion = "1.3.9-native-mt"
-    val serializationVersion = "1.0.0-RC"
-    val ktorVersion = "1.4.0"
+    val coroutinesVersion = "1.5.0-native-mt"
+    val serializationVersion = "1.2.2"
+    val ktorVersion = "1.6.1"
     val sqlDelightVersion: String by project
 
     sourceSets {
@@ -90,11 +90,11 @@ android {
 //        create("testDebugApi")
 //        create("testReleaseApi")
 //    }
-    compileSdk = 30
+    compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
     }
 }
 
